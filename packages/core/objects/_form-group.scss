@@ -1,0 +1,22 @@
+.dfe-form-group {
+  @include dfe-responsive-margin(4, 'bottom');
+
+  .dfe-form-group:last-of-type {
+    margin-bottom: 0; // Remove margin from last item in nested groups
+  }
+}
+
+.dfe-form-group--wrapper {
+  @include dfe-responsive-margin(5, 'bottom');
+}
+
+.dfe-form-group--error {
+  border-left: $dfe-border-width-form-group-error solid $dfe-error-color;
+  padding-left: dfe-spacing(3);
+
+  .dfe-form-group {
+    // Reset error styles in nested form groups that might have error class
+    border: 0;
+    padding: 0;
+  }
+}

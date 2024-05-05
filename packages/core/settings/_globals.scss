@@ -1,0 +1,96 @@
+// ==========================================================================
+// SETTINGS / #GLOBALS
+// ==========================================================================
+
+@use 'sass:math';
+
+//
+// Fonts
+//
+// 1. Fallback fonts if a device doesnt have any of the installed fonts
+//
+
+$dfe-font:
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+Oxygen-Sans,
+Ubuntu,
+Cantarell,
+'Helvetica Neue';
+
+$dfe-font-fallback: Sans-serif !default; // [1] //
+$dfe-font-family-print: sans-serif !default;
+$dfe-font-bold: 700 !default;
+$dfe-font-medium: 500 !default;
+$dfe-font-normal: 400 !default;
+$dfe-font-light: $dfe-font-normal !default;
+
+
+//
+// Font sizing and spacing
+//
+
+$dfe-base-font-size: 16px !default;
+$dfe-base-line-height: 24px !default;
+
+//
+// Icon default sizing
+//
+
+$dfe-icon-size: 34px !default;
+
+//
+// Grid spacing
+//
+
+$dfe-page-width: 1200px;
+$dfe-gutter: 32px;
+$dfe-gutter-half: 16px;
+
+//
+// Border sizes
+//
+
+$dfe-border-width-inset-text: 8px !default;
+$dfe-care-card-triangle-border: 16px !default;
+$dfe-hero-content-triangle-border: 16px !default;
+$dfe-hero-border: 1px !default;
+$dfe-border-table-header-width: 2px !default;
+$dfe-border-table-cell-width: 1px !default;
+
+//
+// Border radius
+//
+
+$dfe-border-radius: 2px !default;
+
+//
+// Box shadow
+//
+
+$dfe-box-shadow-spread: 4px !default;
+$dfe-box-shadow-blur: 4px !default;
+$dfe-box-shadow-link: 4px !default;
+$dfe-box-details: 8px !default;
+$dfe-box-expander: 4px !default;
+$dfe-box-shadow-pagination: 16px !default;
+$dfe-box-shadow-link: 4px !default;
+
+//
+// Header spacing
+//
+
+$dfe-header-spacing: 20px;
+
+//
+// Form elements
+//
+
+$dfe-border-width-form-element: 2px !default;
+$dfe-border-width-form-element-error: 2px !default;
+$dfe-focus-width: 4px !default;
+$dfe-border-width: 4px !default;
+$dfe-border-width-mobile: 4px !default;
+$dfe-border-width-form-group-error: $dfe-border-width !default;
+

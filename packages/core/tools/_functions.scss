@@ -1,0 +1,45 @@
+// ==========================================================================
+// TOOLS / #FUNCTIONS
+// ==========================================================================
+
+// Convert pixels to em
+// ==========================================================================
+
+//
+// A quick way to convert px into em
+// Usage: dfe-em(20px, $dfe-base-font-size);
+//
+// Original code taken from GDS (Government Digital Service)
+// https://github.com/alphagov/govuk-frontend
+//
+
+@use 'sass:math';
+
+@function dfe-em($value, $context-font-size) {
+  @if (unitless($value)) {
+    $value: $value * 1px;
+  }
+  @if (unitless($context-font-size)) {
+    $context-font-size: $context-font-size * 1px;
+  }
+  @return ($value/ $context-font-size);
+}
+
+// Convert pixels to rem
+// ==========================================================================
+
+//
+// A quick way to convert px into rem
+// Usage: dfe-px-to-rem(20px);
+//
+// The $dfe-base-font-size (defined in settings/_globals.scss)
+// must be configured to match the font-size of your root (html) element
+//
+
+@function dfe-px-to-rem($value) {
+  @if (unitless($value)) {
+    $value: $value * 1px;
+  }
+
+  @return math.div($value,$dfe-base-font-size);
+}

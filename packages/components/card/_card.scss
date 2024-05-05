@@ -1,0 +1,96 @@
+.dfe-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+@include mq($from: tablet) {
+    .dfe-grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+}
+
+.dfe-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $color_dfe-white;
+    border: 1px solid $color_dfe-grey-2;
+    max-width: 400px;
+
+}
+
+@include mq($until: tablet) {
+    .dfe-card {
+        max-width: 100%;
+    }
+}
+
+.dfe-card>picture,
+.dfe-card>picture>img {
+    max-width: 100%;
+}
+
+.dfe-card-container {
+    padding: dfe-spacing(4);
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    // Last element push to the bottom
+    :last-child {
+        margin-top: auto;
+    }
+
+    // except when it's just a linkable header and p - don't margin:auto.
+    h2+p:last-child,
+    h3+p:last-child {
+        margin-top: 0px;
+    }
+
+}
+
+.dfe-card:hover,
+.dfe-card:focus-within {
+    background-color: $color_dfe-blue;
+}
+
+.dfe-card:hover a,
+.dfe-card:focus-within a,
+.dfe-card:hover p,
+.dfe-card:focus-within p,
+.dfe-card:hover .govuk-heading-m,
+.dfe-card:focus-within .govuk-heading-m {
+    color: $color_dfe-white;
+}
+
+.dfe-card:focus-within {
+    outline: 3px solid $color_dfe-yellow;
+}
+
+.dfe-card-container .dfe-card-link--retake:focus,
+.dfe-card-container .dfe-card-link--header:focus {
+    color: $color_dfe-black;
+}
+
+.dfe-card-link--retake {
+    position: relative;
+    z-index: 2;
+}
+
+.dfe-card-link--header {
+    text-decoration: none;
+    color: $color_dfe-secondary-blue;
+}
+
+.dfe-card-link--header:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}

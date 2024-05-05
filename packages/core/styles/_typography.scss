@@ -1,0 +1,260 @@
+/* ==========================================================================
+   STYLES / #TYPOGRAPHY
+   ========================================================================== */
+
+/* Headings */
+
+// The % (silent class) allows code to be extended (@extend) to other elements
+// without bloating the code.
+//
+// @example scss
+//  .foo {
+//   @extend %dfe-heading-xl;
+//  }
+
+%dfe-heading-xl {
+  @include dfe-typography-responsive(48);
+
+  display: block;
+  font-weight: $dfe-font-bold;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(7, 'bottom');
+}
+
+h1,
+.dfe-heading-xl, .govuk-heading-xl {
+  @extend %dfe-heading-xl;
+}
+
+%dfe-heading-l {
+  @include dfe-typography-responsive(32);
+
+  display: block;
+  font-weight: $dfe-font-bold;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+h2,
+.dfe-heading-l, .govuk-heading-l {
+  @extend %dfe-heading-l;
+}
+
+%dfe-heading-m {
+  @include dfe-typography-responsive(24);
+
+  display: block;
+  font-weight: $dfe-font-bold;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+h3,
+.dfe-heading-m, .govuk-heading-m {
+  @extend %dfe-heading-m;
+}
+
+%dfe-heading-s {
+  @include dfe-typography-responsive(19);
+
+  display: block;
+  font-weight: $dfe-font-bold;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+h4,
+.dfe-heading-s, .govuk-heading-s {
+  @extend %dfe-heading-s;
+}
+
+%dfe-heading-xs {
+  @include dfe-typography-responsive(19);
+
+  display: block;
+  font-weight: $dfe-font-bold;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+h5,
+.dfe-heading-xs {
+  @extend %dfe-heading-xs;
+}
+
+%dfe-heading-xxs {
+  @include dfe-typography-responsive(19);
+
+  display: block;
+  font-weight: $dfe-font-bold;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+h6,
+.dfe-heading-xxs {
+  @extend %dfe-heading-xxs;
+}
+
+/* Captions to be used inside headings */
+
+.dfe-caption-xl {
+  @include dfe-font(32);
+
+  color: $dfe-secondary-text-color;
+  display: block;
+  margin-bottom: dfe-spacing(1);
+}
+
+.dfe-caption-l {
+  @include dfe-font(24);
+
+  color: $dfe-secondary-text-color;
+  display: block;
+  margin-bottom: dfe-spacing(1);
+}
+
+.dfe-caption-m {
+  @include dfe-font(19);
+
+  color: $dfe-secondary-text-color;
+  display: block;
+}
+
+.dfe-caption--bottom {
+  margin-bottom: dfe-spacing(0);
+  margin-top: dfe-spacing(1);
+}
+
+/* Body (paragraphs) */
+
+%dfe-body-l {
+  @include dfe-typography-responsive(24);
+
+  display: block;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(5, 'bottom');
+}
+
+.dfe-body-l {
+  @extend %dfe-body-l;
+}
+
+%dfe-body-m {
+  @include dfe-typography-responsive(19);
+
+  display: block;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+p,
+.dfe-body-m {
+  @extend %dfe-body-m;
+  color: inherit;
+}
+
+%dfe-body-s {
+  @include dfe-typography-responsive(16);
+
+  display: block;
+  margin-top: 0;
+
+  @include dfe-responsive-margin(4, 'bottom');
+}
+
+.dfe-body-s {
+  @extend %dfe-body-s;
+}
+
+address {
+  @extend %dfe-body-m;
+
+  font-style: normal;
+}
+
+/**
+ * Lede text
+ *
+ * 1. Apply lede text styling to p and ul within the lede element
+ * 2. Reduces the spacing between the page heading and the lede text
+ */
+
+.dfe-lede-text {
+  @include dfe-font(24);
+  @include dfe-responsive-margin(7, 'bottom');
+  /* [1] */
+  p,
+  ul {
+    @include dfe-font(24);
+  }
+}
+
+.dfe-lede-text--small {
+  @include dfe-font(19);
+  @include dfe-responsive-margin(5, 'bottom');
+}
+
+/* [2] */
+h1 + .dfe-lede-text,
+h1 + .dfe-lede-text--small {
+  margin-top: - dfe-spacing(2);
+}
+
+/**
+ * Contextual adjustments
+ *
+ * Add top padding to headings that appear directly after paragraphs.
+ *
+ * 1. Removes the padding-top because of the lede-text's increased margin-bottom
+ *
+ * Original code taken from GDS (Government Digital Service)
+ * https://github.com/alphagov/dfe-frontend
+ */
+
+%dfe-body-l  + %dfe-heading-l {
+  padding-top: dfe-spacing(1);
+
+  @include mq($from: tablet) {
+    padding-top: dfe-spacing(2);
+  }
+}
+
+%dfe-body-m  + %dfe-heading-l,
+%dfe-body-s  + %dfe-heading-l,
+%dfe-list + %dfe-heading-l {
+  @include dfe-responsive-padding(4, 'top');
+}
+
+%dfe-body-m + %dfe-heading-m,
+%dfe-body-s + %dfe-heading-m,
+%dfe-list + %dfe-heading-m,
+%dfe-body-m + %dfe-heading-s,
+%dfe-body-s + %dfe-heading-s,
+%dfe-list + %dfe-heading-s {
+  padding-top: dfe-spacing(1);
+
+  @include mq($from: tablet) {
+    padding-top: dfe-spacing(2);
+  }
+}
+
+/* [1] */
+.dfe-lede-text + %dfe-heading-l {
+  padding-top: 0;
+}
+
+/* Font weight for <strong> and <b> */
+
+strong,
+b {
+  font-weight: $dfe-font-bold;
+}

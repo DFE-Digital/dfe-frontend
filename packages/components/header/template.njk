@@ -1,0 +1,115 @@
+{# Define some defaults #}
+{% set showNav = params.showNav if params.showNav else 
+  "false" %}
+{% set showSearch = params.showSearch if params.showSearch else 
+  "false" %}
+{% set showUserName = params.showUserName if params.showUserName else 
+  "false" %}
+{% set showHeaderActionLinks = params.showHeaderActionLinks if params.showHeaderActionLinks else 
+  "false" %}
+
+{% set dfeLogo %}
+<img src="/{{params.logoPath}}/dfe-logo.png" class="dfe-logo" alt="{{params.logoAltText}}">
+<img src="/{{params.logoPath}}/dfe-logo-alt.png" class="dfe-logo-hover" alt="{{params.logoAltText}}">
+{% endset %}
+
+<header class="dfe-header
+{%- if params.classes %} {{ params.classes }}{% endif %}" role="banner" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="dfe-width-container dfe-header__container">
+    <div class="dfe-header__logo">
+      <a class="dfe-header__link" href="{% if params.homeHref %}{{ params.homeHref }}{% else %}/{% endif %}" aria-label="{% if params.ariaLabel %}{{ params.ariaLabel }}{% else %}DfE homepage{% endif %}">
+        {{ dfeLogo | safe }}
+      </a>
+    </div>
+    <div class="dfe-header__content" id="content-header">
+      {% if showHeaderActionLinks == "true" %}
+        <ul class="dfe-header__action-links">
+          {%- for item in params.headerActionLinks %}
+            <li>
+              {% if item.url %}
+                <a href="{{item.url}}" class="govuk-link govuk-link--inverse">{{item.label}}</a>
+              {% else %}
+                {{item.label}}
+              {% endif %}
+            </li>
+          {%- endfor %}
+        </ul>
+        {% endif%}
+
+        {% if showNav == "true" %}
+          <div class="dfe-header__menu">
+            <button class="dfe-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-expanded="false">Menu</button>
+          </div>
+          {% endif%}
+
+          {% if showSearch == "true" %}
+            <div class="dfe-header__search">
+              <button class="dfe-header__search-toggle" id="toggle-search" aria-controls="search" aria-label="Open search">
+                <svg class="dfe-icon dfe-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+                  <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+                </svg>
+                <span class="govuk-visually-hidden">Search</span>
+              </button>
+              <div class="dfe-header__search-wrap" id="wrap-search">
+                <form class="dfe-header__search-form" id="search" action="{{ params.searchAction if params.searchAction else '/search' }}" method="get" role="search">
+                  <label class="govuk-visually-hidden" for="search-field">Search this website</label>
+                  <input class="dfe-search__input" id="search-field" name="{{ params.searchInputName if params.searchInputName else 'search-field' }}" type="search" placeholder="Search" autocomplete="off">
+                  <button class="dfe-search__submit" type="submit">
+                    <svg class="dfe-icon dfe-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+                      <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+                    </svg>
+                    <span class="govuk-visually-hidden">Search</span>
+                  </button>
+                  <button class="dfe-search__close" id="close-search">
+                    <svg class="dfe-icon dfe-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+                      <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+                    </svg>
+                    <span class="govuk-visually-hidden">Close search</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+            {% endif%}
+
+          </div>
+        </div>
+
+        {%- if params.service %}
+          <div class="dfe-width-container dfe-header__service-name">
+            <a href="{{ params.service.serviceUrl }}" class="dfe-header__link--service">
+              {{- params.service.name }}</a>
+          </div>
+        {%- endif %}
+
+        {# close dfe-header__container #}
+        {% if showNav == "true" %}
+          <nav class="dfe-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" aria-labelledby="label-navigation">
+            <div class="dfe-width-container">
+              <p class="dfe-header__navigation-title">
+                <span id="label-navigation">Menu</span>
+                <button class="dfe-header__navigation-close" id="close-menu">
+                  <svg class="dfe-icon dfe-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+                    <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+                  </svg>
+                  <span class="govuk-visually-hidden">Close menu</span>
+                </button>
+              </p>
+              <ul class="dfe-header__navigation-list">
+                {%- for item in params.primaryLinks %}
+                  <li class="dfe-header__navigation-item {% if item.label === params.selectedNav %}dfe-header__navigation-item--current{% endif %}">
+                    <a class="dfe-header__navigation-link" href="{{item.url}}">
+                      {{item.label}}
+                      <svg class="dfe-icon dfe-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                        <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+                      </svg>
+                    </a>
+                  </li>
+                {%- endfor %}
+              </ul>
+            </div>
+          </nav>
+        {% endif -%}
+      </div>
+    </div>
+  </div>
+</header>

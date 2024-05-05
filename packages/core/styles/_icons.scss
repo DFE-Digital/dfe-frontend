@@ -1,0 +1,103 @@
+/* ==========================================================================
+   STYLES / #ICONS
+   ========================================================================== */
+
+// Default icon size
+
+.dfe-icon {
+  height: $dfe-icon-size;
+  width: $dfe-icon-size;
+}
+
+// Default icon colours
+
+.dfe-icon__search {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__chevron-left {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__chevron-right {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__close {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__cross {
+  fill: $color_dfe-red;
+}
+
+.dfe-icon__tick {
+  stroke: $color_dfe-green;
+}
+
+.dfe-icon__arrow-right {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__arrow-left {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__arrow-right-circle {
+  fill: $color_dfe-green;
+}
+
+.dfe-icon__chevron-down {
+  fill: $color_dfe-blue;
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  path {
+    fill: $color_dfe-white;
+  }
+}
+
+.dfe-icon__chevron-up {
+  fill: $color_dfe-blue;
+  path {
+    fill: $color_dfe-white;
+  }
+}
+
+.dfe-icon__emdash {
+  path {
+    fill: $color_dfe-grey-3;
+  }
+}
+
+.dfe-icon__plus {
+  fill: $color_dfe-blue;
+}
+
+.dfe-icon__minus {
+  fill: $color_dfe-blue;
+}
+
+// Icon size adjustments
+
+.dfe-icon--size-25 {
+  height: $dfe-icon-size * 1.25;
+  width: $dfe-icon-size * 1.25;
+}
+
+.dfe-icon--size-50 {
+  height: $dfe-icon-size * 1.5;
+  width: $dfe-icon-size * 1.5;
+}
+
+.dfe-icon--size-75 {
+  height: $dfe-icon-size * 1.75;
+  width: $dfe-icon-size * 1.75;
+}
+
+.dfe-icon--size-100 {
+  height: $dfe-icon-size * 2;
+  width: $dfe-icon-size * 2;
+}

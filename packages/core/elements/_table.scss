@@ -1,0 +1,51 @@
+/* ==========================================================================
+   ELEMENTS / #TABLES
+   ========================================================================== */
+
+/**
+ * 1. Force `<table>`s to be full-width by default.
+ */
+
+table {
+  @include dfe-responsive-margin(7, 'bottom');
+
+  border-spacing: 0;
+  vertical-align: top;
+  width: 100%; /* [1] */
+
+  @include mq($media-type: print) {
+    page-break-inside: avoid;
+  }
+
+}
+
+thead {
+  th {
+    border-bottom: $dfe-border-table-header-width solid $dfe-border-color;
+  }
+}
+
+th,
+td {
+  @include dfe-typography-responsive(19);
+  @include dfe-responsive-padding(3, 'bottom');
+  @include dfe-responsive-padding(4, 'right');
+  @include dfe-responsive-padding(3, 'top');
+
+  border-bottom: $dfe-border-table-cell-width solid $dfe-border-color;
+  text-align: left;
+  vertical-align: top;
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+th {
+  font-weight: $dfe-font-bold;
+}
+
+caption {
+  @include dfe-font($size: 22, $weight: bold);
+  text-align: left;
+}

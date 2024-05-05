@@ -1,0 +1,50 @@
+/* ==========================================================================
+   OBJECTS / #MAIN-WRAPPER
+   ========================================================================== */
+
+/**
+ * Page wrapper for the grid system
+ *
+ * Usage:
+ * <div class="dfe-width-container">
+ *   <div class="dfe-main-wrapper">
+ *    <!-- Wrapper for the main content of your page which applies padding
+ *         to the top / bottom -->
+ *   </div>
+ * </div>
+ *
+ * Original code taken from GDS (Government Digital Service)
+ * https://github.com/alphagov/govuk-frontend
+ *
+ * 1. In IE11 the `main` element can be used, but is not recognized  –
+ *    meaning it's not defined in IE's default style sheet,
+ *    so it uses CSS initial value, which is inline.
+ */
+
+@mixin govuk-main-wrapper {
+  @include dfe-responsive-padding(7, 'top');
+  @include dfe-responsive-padding(7, 'bottom');
+  @include top-and-bottom();
+  display: block; /* [1] */
+}
+
+@mixin govuk-main-wrapper--l {
+  @include dfe-responsive-padding(8, 'top');
+}
+
+@mixin govuk-main-wrapper--s {
+  @include dfe-responsive-padding(5, 'bottom');
+  @include dfe-responsive-padding(5, 'top');
+}
+
+@include govuk-exports('govuk/objects/main-wrapper') {
+  .dfe-main-wrapper {
+    @include govuk-main-wrapper;
+  }
+  .dfe-main-wrapper--l {
+    @include govuk-main-wrapper--l;
+  }
+  .dfe-main-wrapper--s {
+    @include govuk-main-wrapper--s;
+  }
+}

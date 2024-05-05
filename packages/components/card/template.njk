@@ -1,0 +1,24 @@
+<div class="dfe-width-container">
+    <div class="dfe-grid-container">
+        {% for card in cards %}
+            <div class="dfe-card">
+                {% if card.imageCard %}
+                    <img src="{{card.imagePath}}" alt="{{card.altText}}">
+                {% endif %}
+                <div class="dfe-card-container">
+                    <h{{card.headingLevel}} class="govuk-heading-m">
+                        {% if card.linkCard == true %}
+                            <a href="{{ card.link }}" class="govuk-link govuk-link--no-visited-state dfe-card-link--header" {% if card.openInNewTab === true %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ card.heading }}</a>
+                        {% else %}
+                            {{ card.heading }}
+                        {% endif %}
+                    </h{{card.headingLevel}}>
+                    <p>{{ card.description }}</p>
+                    {% if card.meta %}
+                     <p class="govuk-body-s">{{card.meta}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,144 @@
+// ==========================================================================
+// SETTINGS / #COLOURS
+// ==========================================================================
+
+//
+// DfE colour palette
+//
+// Colours are prefixed with color_ to make them easier to
+// search for within the code base.
+//
+// We also prefix them with dfe- to prevent clashing with
+// other colours in existing code bases.
+//
+// We use the word color, not colour, for variables.
+//
+
+/* stylelint-disable color-no-hex */
+
+$color_dfe-blue: #003a69;
+$color_dfe-secondary-blue: #347ca9;
+$color_dfe-white: #ffffff;
+$color_dfe-black: #0b0c0c;
+$color_dfe-green: #00703c;
+$color_dfe-purple: #4c2c92;
+$color_dfe-dark-pink: #912b88;
+$color_dfe-red: #d4351c;
+$color_dfe-yellow: #ffdd00;
+
+//
+// Greyscale
+//
+
+$color_dfe-grey-1: #505a5f;
+$color_dfe-grey-2: #b1b4b6;
+$color_dfe-grey-3: #aeb7bd;
+$color_dfe-grey-4: #f3f2f1;
+$color_dfe-grey-5: #f0f4f5;
+
+/* stylelint-enable color-no-hex */
+//
+// RGB and alpha values
+//
+// Used to create drop/box shadows e.g. for search suggestions dropdown
+//
+
+$color_dfe-grey-1-rgb: rgb(66, 84, 98);
+$alpha-transparency-50: .5;
+
+//
+// Functions for tint and shade
+//
+// Usage: tint(color, percentage)
+//        tint($color_dfe-black, 10%)
+//        shade(color, percentage)
+//        shade($color_dfe-blue, 50%)
+//
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+//
+// Primary colour variations
+//
+// 1. used for link :active states
+// 2. used for .is-active state on main navigation
+// 3. used for :hover states on main navigation
+// 4. used for :active states on main navigation
+// 5. used for primary button and action link icon :hover states
+// 6. used for primary button and action link icon :active states
+//
+
+$color_tint_dfe-black-10: tint($color_dfe-black, 10%); // [1] //
+
+$color_shade_dfe-blue-20: shade($color_dfe-blue, 20%); // [2] //
+$color_shade_dfe-blue-35: shade($color_dfe-blue, 35%); // [3] //
+$color_shade_dfe-blue-50: shade($color_dfe-blue, 50%); // [4] //
+
+$color_shade_dfe-green-35: shade($color_dfe-green, 35%); // [5] //
+$color_shade_dfe-green-50: shade($color_dfe-green, 50%); // [6] //
+
+$color_transparent_dfe-white-20: rgba($color_dfe-white, .2);
+$color_transparent_dfe-blue-50: rgba($color_shade_dfe-blue-50, .1);
+
+//
+// Colour aliases
+//
+
+// Text
+$dfe-text-color: $color_dfe-black;
+$dfe-secondary-text-color: $color_dfe-grey-1;
+$dfe-print-text-color: $color_dfe-black;
+
+// Links
+$dfe-link-color: $color_dfe-blue;
+$dfe-link-hover-color: $color_dfe-dark-pink;
+$dfe-link-active-color: shade($dfe-link-color, 50%);
+$dfe-link-visited-color: $color_dfe-purple;
+
+// Focus
+$dfe-focus-color: $color_dfe-yellow;
+$dfe-focus-text-color: $color_dfe-black;
+
+// Border
+$dfe-border-color: $color_dfe-grey-4;
+$dfe-secondary-border-color: $color_transparent_dfe-white-20;
+
+// Box shadow
+$dfe-box-shadow: rgba(33, 43, 50, .16);
+$dfe-box-shadow-color: $color_dfe-grey-1-rgb;
+
+//
+// Forms
+//
+
+$dfe-error-color: $color_dfe-red;
+$dfe-form-border-color: $color_dfe-grey-1;
+$dfe-form-element-background-color: $color_dfe-white;
+
+//
+// Buttons
+//
+
+$dfe-button-color: $color_dfe-green;
+$dfe-button-hover-color: shade($dfe-button-color, 20%);
+$dfe-button-active-color: shade($dfe-button-color, 50%);
+$dfe-button-shadow-color: shade($dfe-button-color, 50%);
+
+$dfe-secondary-button-color: $color_dfe-grey-1;
+$dfe-secondary-button-hover-color: shade($dfe-secondary-button-color, 20%);
+$dfe-secondary-button-active-color: shade($dfe-secondary-button-color, 50%);
+$dfe-secondary-button-shadow-color: shade($dfe-secondary-button-color, 50%);
+
+$dfe-reverse-button-color: $color_dfe-white;
+$dfe-reverse-button-hover-color: shade($dfe-reverse-button-color, 20%);
+$dfe-reverse-button-active-color: $color-dfe-black;
+$dfe-reverse-button-shadow-color: $color-dfe-black;
+
+$dfe-button-text-color: $color_dfe-white;
+$dfe-reverse-button-text-color: $color_dfe-black;

@@ -1,0 +1,129 @@
+// ==========================================================================
+// TOOLS / #LINKS
+// ==========================================================================
+
+//
+// Default link styling
+//
+// Usage: @include dfe-link-style-default;
+//
+
+@mixin dfe-link-style-default {
+
+  color: $dfe-link-color;
+
+  &:visited {
+    color: $dfe-link-visited-color;
+  }
+
+  &:hover {
+    color: $dfe-link-hover-color;
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include dfe-focused-text();
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: $dfe-focus-text-color;
+    }
+
+    .dfe-icon {
+      fill: $dfe-focus-text-color;
+    }
+  }
+
+  &:active {
+    color: $dfe-link-active-color;
+  }
+
+}
+
+//
+// White link styling, used in the footer.
+//
+// Usage: @include dfe-link-style-white;
+//
+
+@mixin dfe-link-style-white {
+
+  color: $color_dfe-white;
+
+  &:visited {
+    color: $color_dfe-white;
+  }
+
+  &:hover {
+    color: $color_dfe-white;
+    text-decoration: none;
+  }
+
+  &:focus {
+    color: $dfe-focus-text-color;
+    outline: $dfe-focus-width solid transparent;
+    outline-offset: $dfe-focus-width;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $dfe-link-active-color;
+  }
+
+}
+
+//
+// Default link hover only styling
+//
+// Usage: @include dfe-link-style-hover;
+//
+
+@mixin dfe-link-style-hover {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/// No visited state link mixin
+///
+/// Used in cases where it is not helpful to distinguish between visited and
+/// non-visited links.
+///
+/// For example, navigation links to pages with dynamic content like admin
+/// dashboards. The content on the page is changing all the time, so the fact
+/// that you’ve visited it before is not important.
+///
+/// If you use this mixin in a component you must also include the
+/// dfe-link-style-default mixin in order to get the focus state.
+///
+/// @example scss
+///   .dfe-component__link {
+///     @include dfe-link-style-default;
+///     @include dfe-link-style-no-visited-state;
+///   }
+///
+
+@mixin dfe-link-style-no-visited-state {
+  &:link {
+    color: $dfe-link-color;
+  }
+
+  &:visited {
+    color: $dfe-link-color;
+  }
+
+  &:hover {
+    color: $dfe-link-hover-color;
+  }
+
+  &:active {
+    color: $dfe-link-active-color;
+  }
+
+  &:focus {
+    color: $dfe-focus-text-color;
+  }
+}
